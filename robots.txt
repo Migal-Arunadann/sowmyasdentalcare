@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://drsowmyasdentalcare.com/sitemap.xml
