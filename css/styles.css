@@ -53,7 +53,7 @@
 
   /* Motion */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --header-height: 82px;
+  --header-height: 98px;
 }
 
 /* ==========================================================================
@@ -427,7 +427,7 @@ h1, h2, h3, h4, p, figure, blockquote {
 }
 
 .brand-logo {
-  height: 50px;
+  height: 68px;
   width: auto;
   object-fit: contain;
 }
@@ -1194,29 +1194,43 @@ h1, h2, h3, h4, p, figure, blockquote {
 /* ==========================================================================
    Instagram Reels Carousel (@drsowmyasdentalcare)
    ========================================================================== */
-.carousel-header-controls {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.reels-carousel-stage {
+  position: relative;
 }
 
 .carousel-btn {
-  width: 44px;
-  height: 44px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   border: 1.5px solid var(--border-strong);
-  background-color: var(--surface-white);
+  background-color: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   color: var(--navy-900);
+  box-shadow: var(--shadow-md);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+
+.carousel-btn--prev {
+  left: -22px;
+}
+
+.carousel-btn--next {
+  right: -22px;
 }
 
 .carousel-btn:hover:not(:disabled) {
   background-color: var(--navy-900);
   border-color: var(--navy-900);
   color: var(--surface-white);
+  transform: translateY(-50%) scale(1.06);
 }
 
 .carousel-btn:disabled {
@@ -1225,8 +1239,18 @@ h1, h2, h3, h4, p, figure, blockquote {
 }
 
 .carousel-btn svg {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
+}
+
+@media (max-width: 1280px) {
+  .carousel-btn--prev {
+    left: 10px;
+  }
+
+  .carousel-btn--next {
+    right: 10px;
+  }
 }
 
 .reels-track {
@@ -1939,7 +1963,7 @@ h1, h2, h3, h4, p, figure, blockquote {
 }
 
 .footer-logo-wrap img {
-  height: 44px;
+  height: 58px;
   width: auto;
 }
 
@@ -2032,6 +2056,10 @@ h1, h2, h3, h4, p, figure, blockquote {
 }
 
 @media (max-width: 860px) {
+  :root {
+    --header-height: 84px;
+  }
+
   .nav-toggle {
     display: inline-flex;
   }
@@ -2117,8 +2145,13 @@ h1, h2, h3, h4, p, figure, blockquote {
 @media (max-width: 580px) {
   .brand-logo {
     height: auto;
-    max-height: 40px;
-    max-width: 195px;
+    max-height: 52px;
+    max-width: 240px;
+  }
+
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
   }
 
   .btn {
