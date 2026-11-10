@@ -15,7 +15,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 
   <link rel="icon" type="image/png" href="assets/logo.png">
   <link rel="stylesheet" href="css/styles.css">
@@ -66,15 +66,15 @@
       </nav>
 
       <div class="header-actions">
-        <a class="btn btn--primary btn--sm" href="tel:+918754516531">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <a class="header-phone-link" href="tel:+918754516531">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.58 2.81.7A2 2 0 0 1 22 16.92z"/>
           </svg>
           <span>087545 16531</span>
         </a>
 
         <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation menu">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
             <line x1="3" y1="6" x2="21" y2="6"/>
             <line x1="3" y1="12" x2="21" y2="12"/>
             <line x1="3" y1="18" x2="21" y2="18"/>
@@ -85,7 +85,7 @@
   </header>
 
   <main id="main-content">
-    <section class="page-banner">
+    <section class="page-header-editorial">
       <div class="container">
         <nav class="breadcrumb" aria-label="Breadcrumb">
           <a href="index.html">Home</a>
@@ -93,7 +93,7 @@
           <span>Contact &amp; Directions</span>
         </nav>
 
-        <div class="page-banner-inner">
+        <div class="page-header-inner">
           <span class="eyebrow">Visit Our Clinic</span>
           <h1 class="display-title">Teynampet clinic details &amp; <em>directions</em></h1>
           <p class="lead-text">
@@ -103,26 +103,21 @@
       </div>
     </section>
 
-    <section class="section section--white">
+    <section class="section section--light">
       <div class="container contact-layout">
-        <div class="contact-detail-stack">
-          <!-- Phone & WhatsApp Card -->
-          <article class="detail-card" data-reveal>
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.58 2.81.7A2 2 0 0 1 22 16.92z"/>
-              </svg>
-            </div>
+        <div class="contact-directory">
+          <article class="contact-entry" data-reveal>
+            <span class="contact-entry-num">01</span>
             <div>
               <h2>Phone &amp; WhatsApp</h2>
               <p>
                 <strong>087545 16531</strong><br>
                 Call or message our front desk to check same-day slot availability or ask clinic directions.
               </p>
-              <div class="detail-actions">
+              <div class="contact-entry-actions">
                 <a class="btn btn--primary btn--sm" href="tel:+918754516531">Call 087545 16531</a>
                 <a
-                  class="btn btn--sage btn--sm"
+                  class="btn btn--outline btn--sm"
                   href="https://wa.me/918754516531?text=Hello%20Dr.%20Sowmya%27s%20Dental%20Care%2C%20I%20would%20like%20to%20enquire%20about%20visiting%20the%20clinic."
                   target="_blank"
                   rel="noopener noreferrer"
@@ -133,14 +128,8 @@
             </div>
           </article>
 
-          <!-- Clinic Address Card -->
-          <article class="detail-card" data-reveal data-reveal-delay="1">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                <circle cx="12" cy="10" r="3"/>
-              </svg>
-            </div>
+          <article class="contact-entry" data-reveal data-reveal-delay="1">
+            <span class="contact-entry-num">02</span>
             <div>
               <h2>Clinic Address</h2>
               <p>
@@ -149,27 +138,25 @@
               <p style="margin-top: 6px; font-size: 0.88rem;">
                 Google Plus Code: <strong>26JW+JR Chennai, Tamil Nadu</strong>
               </p>
-              <div class="detail-actions">
+              <div class="contact-entry-actions">
                 <a
-                  class="btn btn--outline btn--sm"
+                  class="editorial-link"
                   href="https://www.google.com/maps/search/?api=1&query=Dr.+Sowmya's+Dental+Care+No.+25%2F11+Cenotoph+2nd+Ln+Teynampet+Chennai+600018"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Get Directions on Google Maps
+                  <span>Open in Google Maps</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                    <line x1="7" y1="17" x2="17" y2="7"/>
+                    <polyline points="7 7 17 7 17 17"/>
+                  </svg>
                 </a>
               </div>
             </div>
           </article>
 
-          <!-- Clinic Hours Card -->
-          <article class="detail-card" data-reveal data-reveal-delay="2">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <circle cx="12" cy="12" r="10"/>
-                <polyline points="12 6 12 12 16 14"/>
-              </svg>
-            </div>
+          <article class="contact-entry" data-reveal data-reveal-delay="2">
+            <span class="contact-entry-num">03</span>
             <div>
               <h2>Opening Hours</h2>
               <p>
@@ -177,44 +164,40 @@
                 Sunday: By prior appointment only
               </p>
               <p style="margin-top: 6px; font-size: 0.88rem;">
-                Calling ahead helps us keep wait times short so your consultation remains unhurried.
+                Calling ahead helps keep waiting times brief so every consultation remains unhurried.
               </p>
             </div>
           </article>
 
-          <!-- Inclusivity & Social Card -->
-          <article class="detail-card" data-reveal data-reveal-delay="3">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-              </svg>
-            </div>
+          <article class="contact-entry" data-reveal data-reveal-delay="3">
+            <span class="contact-entry-num">04</span>
             <div>
               <h2>Inclusive Care &amp; Instagram</h2>
               <p>
-                We are proud to foster a calm, judgment-free clinical space for every patient in Chennai.
+                We are proud to offer a calm, judgment-free clinical space for every visitor in Chennai.
               </p>
-              <div class="trust-badges" style="margin-top: 12px;">
-                <span class="trust-pill trust-pill--sage">Identifies as Women-Owned</span>
-                <span class="trust-pill trust-pill--gold">LGBTQ+ Friendly</span>
+              <div class="inclusivity-facts">
+                <span>Identifies as Women-Owned</span>
+                <span>LGBTQ+ Friendly</span>
               </div>
-              <div class="detail-actions">
+              <div class="contact-entry-actions">
                 <a
-                  class="btn btn--outline btn--sm"
+                  class="editorial-link"
                   href="https://www.instagram.com/drsowmyasdentalcare/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Follow @drsowmyasdentalcare
+                  <span>Follow @drsowmyasdentalcare</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                    <line x1="7" y1="17" x2="17" y2="7"/>
+                    <polyline points="7 7 17 7 17 17"/>
+                  </svg>
                 </a>
               </div>
             </div>
           </article>
         </div>
 
-        <!-- Map & Exterior Recognition -->
         <div class="map-panel" data-reveal data-reveal-delay="1">
           <div class="map-embed-frame">
             <iframe
@@ -238,12 +221,12 @@
               >
             </div>
             <div>
-              <span class="tour-label" style="margin-bottom: 4px;">Spot Our Entrance</span>
-              <h3 style="font-family: var(--font-display); font-size: 1.35rem; color: var(--navy-900); margin-bottom: 4px;">
+              <span class="tour-label">Arrival Guide</span>
+              <h3 style="font-family: var(--font-display); font-size: 1.45rem; font-weight: 500; color: var(--ink); margin-bottom: 4px;">
                 Look for the illuminated sign on Cenotoph 2nd Ln
               </h3>
-              <p style="font-size: 0.9rem; color: var(--ink-500);">
-                Set back softly behind terracotta walls and lush potted greenery in Austin Nagar, Teynampet—easy to recognize day or evening.
+              <p style="font-size: 0.9rem; color: var(--ink-muted);">
+                Set back behind warm terracotta walls and potted greenery in Austin Nagar, Teynampet—easy to recognize day or evening.
               </p>
             </div>
           </div>

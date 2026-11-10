@@ -15,7 +15,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 
   <link rel="icon" type="image/png" href="assets/logo.png">
   <link rel="stylesheet" href="css/styles.css">
@@ -59,15 +59,15 @@
       </nav>
 
       <div class="header-actions">
-        <a class="btn btn--primary btn--sm" href="tel:+918754516531">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <a class="header-phone-link" href="tel:+918754516531">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.58 2.81.7A2 2 0 0 1 22 16.92z"/>
           </svg>
           <span>087545 16531</span>
         </a>
 
         <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation menu">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
             <line x1="3" y1="6" x2="21" y2="6"/>
             <line x1="3" y1="12" x2="21" y2="12"/>
             <line x1="3" y1="18" x2="21" y2="18"/>
@@ -78,7 +78,7 @@
   </header>
 
   <main id="main-content">
-    <section class="page-banner">
+    <section class="page-header-editorial">
       <div class="container">
         <nav class="breadcrumb" aria-label="Breadcrumb">
           <a href="index.html">Home</a>
@@ -86,34 +86,36 @@
           <span>Treatments &amp; Smile Gallery</span>
         </nav>
 
-        <div class="page-banner-inner">
+        <div class="page-header-inner">
           <span class="eyebrow">Comprehensive Dentistry</span>
           <h1 class="display-title">Clinical precision delivered with <em>gentle care</em></h1>
           <p class="lead-text">
-            Every treatment plan starts with a clear, unhurried explanation of your options—helping you choose lasting solutions for comfort, function, and smile confidence.
+            Every treatment plan begins with a clear, unhurried walkthrough of your options—helping you choose lasting care for comfort, function, and natural smile confidence.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Categorized Clinical Treatments -->
-    <section class="section section--white">
+    <!-- 2x2 Architectural Disciplines Directory -->
+    <section class="section section--light">
       <div class="container">
-        <div class="section-header" data-reveal>
+        <div class="section-head-split" data-reveal>
           <div>
             <span class="eyebrow">Services Offered</span>
             <h2 class="section-title">Preventive, restorative &amp; <em>cosmetic care</em></h2>
           </div>
-          <a class="btn btn--outline" href="#smile-gallery">Jump to Before &amp; After Slider</a>
+          <a class="editorial-link" href="#smile-gallery">
+            <span>Jump to Before &amp; After Slider</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <line x1="12" y1="5" x2="12" y2="19"/>
+              <polyline points="19 12 12 19 5 12"/>
+            </svg>
+          </a>
         </div>
 
-        <div class="cards-grid-2">
-          <article class="clinical-card" id="preventive" data-reveal data-reveal-delay="1">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              </svg>
-            </div>
+        <div class="disciplines-grid">
+          <article class="discipline-cell" id="preventive" data-reveal>
+            <span class="discipline-cell-num">01</span>
             <h3>Preventive &amp; General Dentistry</h3>
             <p>
               Thoughtful baseline diagnostics and gentle hygiene sessions designed to detect minor concerns early and protect natural tooth structure for adults and children alike.
@@ -126,34 +128,25 @@
             </ul>
           </article>
 
-          <article class="clinical-card" id="restorative" data-reveal data-reveal-delay="2">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <circle cx="12" cy="12" r="9"/>
-                <path d="M9 12l2 2 4-4"/>
-              </svg>
-            </div>
+          <article class="discipline-cell" id="restorative" data-reveal data-reveal-delay="1">
+            <span class="discipline-cell-num">02</span>
             <h3>Endodontics &amp; Restorative Care</h3>
             <p>
-              Saving natural teeth comfortably using modern pain-managed protocols and custom-shaded restorations that blend effortlessly with surrounding enamel.
+              Saving natural teeth comfortably using modern pain-managed protocols and custom-shaded restorations that blend naturally with surrounding enamel.
             </p>
             <ul class="treatment-bullets">
               <li>Painless Root Canal Treatment (RCT) with calm pacing</li>
               <li>Aesthetic tooth-colored composite fillings</li>
               <li>Natural-shade ceramic &amp; zirconia dental crowns</li>
-              <li>Custom dental bridges &amp; comfortable removable dentures</li>
+              <li>Custom dental bridges &amp; comfortable dentures</li>
             </ul>
           </article>
 
-          <article class="clinical-card" id="surgical" data-reveal data-reveal-delay="3">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5"/>
-              </svg>
-            </div>
+          <article class="discipline-cell" id="surgical" data-reveal>
+            <span class="discipline-cell-num">03</span>
             <h3>Dental Implants &amp; Oral Surgery</h3>
             <p>
-              Carefully planned surgical treatments and tooth replacements supported by patient pre-op walkthroughs and attentive post-procedure recovery follow-ups.
+              Carefully planned surgical treatments and tooth replacements supported by calm pre-op walkthroughs and attentive post-procedure recovery follow-ups.
             </p>
             <ul class="treatment-bullets">
               <li>Single &amp; multi-tooth dental implantology</li>
@@ -163,13 +156,8 @@
             </ul>
           </article>
 
-          <article class="clinical-card" id="cosmetic" data-reveal data-reveal-delay="4">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path d="M7 14c1.5 2 3.2 3 5 3s3.5-1 5-3"/>
-                <circle cx="12" cy="12" r="9"/>
-              </svg>
-            </div>
+          <article class="discipline-cell" id="cosmetic" data-reveal data-reveal-delay="1">
+            <span class="discipline-cell-num">04</span>
             <h3>Smile Designing &amp; Tooth Alignment</h3>
             <p>
               Conservative aesthetic dentistry tailored around natural proportions—closing gaps, refining alignment, and lifting discoloration while preserving healthy enamel.
@@ -185,10 +173,10 @@
       </div>
     </section>
 
-    <!-- Interactive Before & After Teeth Slider Section -->
-    <section class="section section--sage" id="smile-gallery">
+    <!-- Interactive Before & After Teeth Slider -->
+    <section class="section section--forest" id="smile-gallery">
       <div class="container ba-showcase">
-        <div class="ba-card" data-reveal>
+        <div class="ba-frame" data-reveal>
           <div class="ba-slider" data-ba-slider>
             <img
               class="ba-img"
@@ -214,7 +202,7 @@
             <span class="ba-label ba-label--after">After</span>
             <div class="ba-divider" aria-hidden="true">
               <div class="ba-handle">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <polyline points="8 7 3 12 8 17"/>
                   <polyline points="16 7 21 12 16 17"/>
                 </svg>
@@ -231,49 +219,42 @@
             >
           </div>
           <div class="ba-caption-bar">
-            <span class="ba-hint">Drag handle left or right (or use arrow keys)</span>
+            <span>Drag handle left or right (or use arrow keys)</span>
             <span>Illustrative clinical demo · Gap closure &amp; brightening</span>
           </div>
         </div>
 
         <div data-reveal data-reveal-delay="1">
           <span class="eyebrow">Interactive Comparison</span>
-          <h2 class="section-title">See how subtle adjustments <em>transform a smile</em></h2>
-          <p style="margin-top: 16px;">
-            Many patients visit Dr. Sowmya's Dental Care hoping to close a front tooth gap or improve alignment without aggressive grinding or an overly artificial shade.
+          <h2 class="section-title">Subtle refinements that <em>transform a smile</em></h2>
+          <p class="lead-text" style="margin-top: 16px;">
+            Many patients visit Dr. Sowmya's Dental Care hoping to close a front tooth gap or improve alignment without aggressive grinding or an artificial bright-white shade.
           </p>
-          <ul class="credentials-list">
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-              <span><strong>Conservative Philosophy:</strong> Preserving natural enamel first</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-              <span><strong>Shade Matching:</strong> Natural ivory warmth matched to skin tone</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-              <span><strong>Clear Option Review:</strong> Comparing bonding, veneers &amp; alignment openly</span>
-            </li>
+          <ul class="ba-notes">
+            <li><strong>Conservative Philosophy:</strong> Preserving natural enamel first.</li>
+            <li><strong>Natural Shade Matching:</strong> Warm ivory tones matched to your complexion.</li>
+            <li><strong>Transparent Review:</strong> Comparing bonding, veneers &amp; alignment openly.</li>
           </ul>
-          <a class="btn btn--primary" href="contact.html">Plan Your Visit in Teynampet</a>
+          <a class="btn btn--gold" href="contact.html">Plan Your Visit in Teynampet</a>
         </div>
       </div>
     </section>
 
     <!-- Patient Care FAQs -->
-    <section class="section section--cream">
+    <section class="section section--paper">
       <div class="container">
-        <div class="section-header section-header--center" data-reveal>
-          <span class="eyebrow">Patient Questions</span>
-          <h2 class="section-title">What to expect at <em>your appointment</em></h2>
+        <div class="section-head-split" data-reveal>
+          <div>
+            <span class="eyebrow">Patient Questions</span>
+            <h2 class="section-title">What to expect at <em>your appointment</em></h2>
+          </div>
         </div>
 
         <div class="faq-list" data-reveal>
           <div class="faq-item is-open">
             <button class="faq-trigger" type="button" data-faq-trigger aria-expanded="true">
               <span>How does Dr. Sowmya help anxious or first-time dental patients?</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
                 <line x1="12" y1="5" x2="12" y2="19"/>
                 <line x1="5" y1="12" x2="19" y2="12"/>
               </svg>
@@ -290,7 +271,7 @@
           <div class="faq-item">
             <button class="faq-trigger" type="button" data-faq-trigger aria-expanded="false">
               <span>Are wisdom teeth removals and root canal treatments painful?</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
                 <line x1="12" y1="5" x2="12" y2="19"/>
                 <line x1="5" y1="12" x2="19" y2="12"/>
               </svg>
@@ -307,7 +288,7 @@
           <div class="faq-item">
             <button class="faq-trigger" type="button" data-faq-trigger aria-expanded="false">
               <span>Can I consult for a second opinion on a dental treatment plan?</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
                 <line x1="12" y1="5" x2="12" y2="19"/>
                 <line x1="5" y1="12" x2="19" y2="12"/>
               </svg>
@@ -324,7 +305,7 @@
           <div class="faq-item">
             <button class="faq-trigger" type="button" data-faq-trigger aria-expanded="false">
               <span>When is the clinic open for consultations?</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
                 <line x1="12" y1="5" x2="12" y2="19"/>
                 <line x1="5" y1="12" x2="19" y2="12"/>
               </svg>
@@ -341,17 +322,15 @@
       </div>
     </section>
 
-    <section class="section section--white" style="padding-top: 24px;">
-      <div class="container">
-        <div class="visit-banner" data-reveal>
-          <div class="visit-banner-copy">
-            <h2>Have questions about a treatment?</h2>
-            <p>Call our Teynampet front desk directly or drop by No. 25/11, Cenotoph 2nd Ln during clinic hours.</p>
-          </div>
-          <div class="visit-banner-actions">
-            <a class="btn btn--gold" href="tel:+918754516531">Call 087545 16531</a>
-            <a class="btn btn--outline-light" href="contact.html">Contact &amp; Map</a>
-          </div>
+    <section class="visit-band">
+      <div class="container visit-band-inner" data-reveal>
+        <div>
+          <h2>Questions about a procedure?</h2>
+          <p>Call our Teynampet front desk directly or drop by No. 25/11, Cenotoph 2nd Ln during clinic hours.</p>
+        </div>
+        <div class="visit-band-actions">
+          <a class="btn btn--gold" href="tel:+918754516531">Call 087545 16531</a>
+          <a class="btn btn--outline-light" href="contact.html">Contact &amp; Map</a>
         </div>
       </div>
     </section>

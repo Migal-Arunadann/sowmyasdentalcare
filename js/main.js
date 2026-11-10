@@ -209,29 +209,22 @@ function initReelsCarousel() {
       trigger.className = "reel-card-trigger";
       trigger.setAttribute("aria-label", `Play Instagram Reel ${index + 1} of ${cleanUrls.length}`);
 
-      const topBar = document.createElement("div");
-      topBar.className = "reel-card-top";
-      const handlePill = document.createElement("span");
-      handlePill.className = "reel-handle-pill";
-      handlePill.textContent = config.handle || "@drsowmyasdentalcare";
-      topBar.appendChild(handlePill);
-
       const bottomBar = document.createElement("div");
       bottomBar.className = "reel-card-bottom";
 
-      const watchPill = document.createElement("span");
-      watchPill.className = "reel-watch-pill";
-      watchPill.appendChild(createPlayIconSvg());
+      const watchLabel = document.createElement("span");
+      watchLabel.className = "reel-watch-label";
+      watchLabel.appendChild(createPlayIconSvg());
       const watchText = document.createElement("span");
       watchText.textContent = "Watch Reel";
-      watchPill.appendChild(watchText);
+      watchLabel.appendChild(watchText);
 
       const indexPill = document.createElement("span");
       indexPill.className = "reel-index-pill";
       indexPill.textContent = `${String(index + 1).padStart(2, "0")} / ${String(cleanUrls.length).padStart(2, "0")}`;
 
-      bottomBar.append(watchPill, indexPill);
-      trigger.append(topBar, bottomBar);
+      bottomBar.append(watchLabel, indexPill);
+      trigger.appendChild(bottomBar);
       trigger.addEventListener("click", () => modal.open(index, trigger));
 
       card.append(viewport, trigger);

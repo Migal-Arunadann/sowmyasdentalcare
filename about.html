@@ -15,7 +15,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 
   <link rel="icon" type="image/png" href="assets/logo.png">
   <link rel="stylesheet" href="css/styles.css">
@@ -60,15 +60,15 @@
       </nav>
 
       <div class="header-actions">
-        <a class="btn btn--primary btn--sm" href="tel:+918754516531">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <a class="header-phone-link" href="tel:+918754516531">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.58 2.81.7A2 2 0 0 1 22 16.92z"/>
           </svg>
           <span>087545 16531</span>
         </a>
 
         <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation menu">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
             <line x1="3" y1="6" x2="21" y2="6"/>
             <line x1="3" y1="12" x2="21" y2="12"/>
             <line x1="3" y1="18" x2="21" y2="18"/>
@@ -79,7 +79,7 @@
   </header>
 
   <main id="main-content">
-    <section class="page-banner">
+    <section class="page-header-editorial">
       <div class="container">
         <nav class="breadcrumb" aria-label="Breadcrumb">
           <a href="index.html">Home</a>
@@ -87,137 +87,115 @@
           <span>About &amp; Clinic Tour</span>
         </nav>
 
-        <div class="page-banner-inner">
-          <span class="eyebrow">Our Practice &amp; Philosophy</span>
+        <div class="page-header-inner">
+          <span class="eyebrow">Practice &amp; Philosophy</span>
           <h1 class="display-title">Calm care shaped around <em>listening first</em></h1>
           <p class="lead-text">
-            Led by Dr. Sowmya S., our Teynampet clinic pairs evidence-based dentistry with a soothing physical environment so every patient feels heard, informed, and genuinely comfortable.
+            Led by Dr. Sowmya S., our Teynampet clinic pairs evidence-based dentistry with a soothing physical environment so every patient feels heard, informed, and at ease.
           </p>
         </div>
       </div>
     </section>
 
     <!-- Dr. Sowmya Profile -->
-    <section class="section section--white">
+    <section class="section section--light">
       <div class="container split-grid">
-        <div class="portrait-frame portrait-frame--square" data-reveal>
-          <img
-            src="assets/dr-sowmya-s-dentist-teynampet.jpg"
-            alt="Dr. Sowmya S., BDS — Founder and Lead Dentist at Dr. Sowmya's Dental Care"
-            width="1080"
-            height="1080"
-          >
-          <div class="portrait-caption-badge">
-            <strong>Dr. Sowmya S., BDS</strong>
-            <span>10+ Years in Clinical Dentistry · Chennai</span>
+        <figure class="editorial-figure" data-reveal>
+          <div class="editorial-frame editorial-frame--square">
+            <img
+              src="assets/dr-sowmya-s-dentist-teynampet.jpg"
+              alt="Dr. Sowmya S., BDS — Founder and Lead Dentist at Dr. Sowmya's Dental Care"
+              width="1080"
+              height="1080"
+            >
           </div>
-        </div>
+          <figcaption class="editorial-caption">
+            <strong>Dr. Sowmya S., BDS</strong>
+            <span>10+ Years Clinical Practice · Chennai</span>
+          </figcaption>
+        </figure>
 
         <div data-reveal data-reveal-delay="1">
           <span class="eyebrow">Lead Practitioner</span>
           <h2 class="section-title">Dr. Sowmya S., <em>BDS</em></h2>
           <p style="margin-top: 16px;">
-            After completing her Bachelor of Dental Surgery at Ragas Dental College &amp; Hospital, Chennai in 2012, Dr. Sowmya S. has spent over a decade refining gentle restorative, aesthetic, and surgical techniques. Her practice focuses on general dentistry, conservative smile designing, teeth gap closures, and dental implantology.
+            After completing her Bachelor of Dental Surgery at Ragas Dental College &amp; Hospital, Chennai in 2012, Dr. Sowmya S. has spent over a decade refining gentle restorative, aesthetic, and surgical techniques. Her focus spans general dentistry, conservative smile designing, teeth gap closures, and dental implantology.
           </p>
           <p style="margin-top: 14px;">
             Many patients arrive feeling nervous from previous dental experiences or overwhelmed by conflicting advice elsewhere. Dr. Sowmya believes clarity removes fear—taking time at every appointment to walk through X-rays, diagnoses, and realistic options without pressure.
           </p>
 
           <ul class="credentials-list">
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>BDS — Ragas Dental College &amp; Hospital, Chennai (2012)</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Over 10 years of clinical expertise in smile design, implants &amp; gentle care</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>4.8 ★ rating across 139 verified Google patient reviews</span>
-            </li>
+            <li>BDS — Ragas Dental College &amp; Hospital, Chennai (2012)</li>
+            <li>Over 10 years of clinical expertise in smile design, implants &amp; gentle care</li>
+            <li>4.8 ★ rating across 139 verified Google patient reviews</li>
           </ul>
 
-          <div class="trust-badges">
-            <span class="trust-pill trust-pill--sage">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <span>Identifies as Women-Owned</span>
-            </span>
-            <span class="trust-pill trust-pill--gold">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-              <span>LGBTQ+ Friendly Space</span>
-            </span>
+          <div class="inclusivity-facts">
+            <span>Identifies as Women-Owned</span>
+            <span>LGBTQ+ Friendly Space</span>
           </div>
         </div>
       </div>
     </section>
 
     <!-- 3 Practice Pillars -->
-    <section class="section section--cream">
+    <section class="section section--sage">
       <div class="container">
-        <div class="section-header section-header--center" data-reveal>
-          <span class="eyebrow">What Patients Notice First</span>
-          <h2 class="section-title">Designed for trust, comfort &amp; <em>clarity</em></h2>
+        <div class="section-head-split" data-reveal>
+          <div>
+            <span class="eyebrow">Patient Ethos</span>
+            <h2 class="section-title">Designed for trust, comfort &amp; <em>clarity</em></h2>
+          </div>
         </div>
 
-        <div class="cards-grid-3">
-          <article class="clinical-card" data-reveal data-reveal-delay="1">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-              </svg>
-            </div>
+        <div class="editorial-cols-3">
+          <article class="editorial-pillar" data-reveal>
+            <span class="editorial-review-num">01</span>
             <h3>Honest Walkthroughs</h3>
             <p>
               Before touching a tooth, we explain what is happening, why a treatment is recommended, and any conservative alternatives available.
             </p>
           </article>
 
-          <article class="clinical-card" data-reveal data-reveal-delay="2">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
-              </svg>
-            </div>
-            <h3>Warm, Non-Clinical Calm</h3>
+          <article class="editorial-pillar" data-reveal data-reveal-delay="1">
+            <span class="editorial-review-num">02</span>
+            <h3>Warm, Calm Architecture</h3>
             <p>
-              Soft sage tones, cane seating, warm lighting, and greenery at our entrance replace cold hospital anxiety with serene comfort.
+              Soft sage paneling, woven cane seating, warm lighting, and greenery at our entrance replace sterile hospital anxiety with serene calm.
             </p>
           </article>
 
-          <article class="clinical-card" data-reveal data-reveal-delay="3">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                <polyline points="22 4 12 14.01 9 11.01"/>
-              </svg>
-            </div>
+          <article class="editorial-pillar" data-reveal data-reveal-delay="2">
+            <span class="editorial-review-num">03</span>
             <h3>Attentive Follow-Ups</h3>
             <p>
-              Care does not stop when you step out of the chair. Our team checks in thoughtfully through your recovery and alignment milestones.
+              Care continues well after you leave the chair. Our team checks in thoughtfully through your recovery and alignment milestones.
             </p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Complete Clinic Tour (All 6 Clinic Photos Appropriately Placed) -->
-    <section class="section section--white" id="clinic-tour">
+    <!-- Complete Clinic Tour (All Clinic Photos Appropriately Placed) -->
+    <section class="section section--light" id="clinic-tour">
       <div class="container">
-        <div class="section-header" data-reveal>
+        <div class="section-head-split" data-reveal>
           <div>
             <span class="eyebrow">Clinic Tour</span>
-            <h2 class="section-title">Step inside our <em>Teynampet</em> space</h2>
-            <p class="lead-text" style="margin-top: 12px;">
-              A calm, thoughtful layout built around patient privacy, warm acoustics, and spotless clinical hygiene at Cenotaph 2nd Lane.
-            </p>
+            <h2 class="section-title">Step inside our <em>Teynampet</em> studio</h2>
           </div>
-          <a class="btn btn--outline" href="contact.html">Directions &amp; Hours</a>
+          <a class="editorial-link" href="contact.html">
+            <span>Directions &amp; Timings</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
         </div>
 
         <div class="tour-grid">
-          <!-- Featured 3 Primary Renovated Spaces -->
-          <article class="tour-card tour-card--featured tour-card--tall" data-reveal data-reveal-delay="1">
+          <article class="tour-card tour-card--featured tour-card--tall" data-reveal>
             <div class="tour-media">
               <img
                 src="assets/dr-sowmyas-dental-care-exterior-chennai.jpg"
@@ -229,13 +207,13 @@
               >
             </div>
             <div class="tour-body">
-              <span class="tour-label">Clinic Exterior</span>
+              <span class="tour-label">Plate 01 · Exterior</span>
               <h3>Welcoming Evening Entrance</h3>
-              <p>Easily recognizable illuminated fascia framed by warm terracotta walls and lush potted greenery off Cenotaph 2nd Lane.</p>
+              <p>Illuminated fascia framed by terracotta walls and lush potted greenery off Cenotaph 2nd Lane.</p>
             </div>
           </article>
 
-          <article class="tour-card tour-card--featured tour-card--tall" data-reveal data-reveal-delay="2">
+          <article class="tour-card tour-card--featured tour-card--tall" data-reveal data-reveal-delay="1">
             <div class="tour-media">
               <img
                 src="assets/clinic-waiting-lounge-reception.jpg"
@@ -247,13 +225,13 @@
               >
             </div>
             <div class="tour-body">
-              <span class="tour-label">Patient Lounge</span>
-              <h3>Calm Waiting Lounge &amp; Desk</h3>
-              <p>Woven cane chairs, sage paneling, framed patient appreciation notes, and unhurried check-in greeting every visitor.</p>
+              <span class="tour-label">Plate 02 · Lounge</span>
+              <h3>Waiting Lounge &amp; Desk</h3>
+              <p>Woven cane chairs, sage paneling, framed patient appreciation notes, and unhurried check-in.</p>
             </div>
           </article>
 
-          <article class="tour-card tour-card--featured tour-card--tall" data-reveal data-reveal-delay="3">
+          <article class="tour-card tour-card--featured tour-card--tall" data-reveal data-reveal-delay="2">
             <div class="tour-media">
               <img
                 src="assets/main-dental-treatment-suite.jpg"
@@ -265,14 +243,13 @@
               >
             </div>
             <div class="tour-body">
-              <span class="tour-label">Treatment Suite</span>
-              <h3>Main Consultation &amp; Operatory</h3>
-              <p>Spacious terrazzo-floored suite combining an ergonomic sage dental chair, one-on-one consultation table, and curtained rest bay.</p>
+              <span class="tour-label">Plate 03 · Main Suite</span>
+              <h3>Consultation &amp; Operatory</h3>
+              <p>Terrazzo-floored suite combining an ergonomic sage dental unit, consultation desk, and curtained rest bay.</p>
             </div>
           </article>
 
-          <!-- Additional Clinic Rooms (Completing all uploaded clinic spaces) -->
-          <article class="tour-card" data-reveal data-reveal-delay="1">
+          <article class="tour-card" data-reveal>
             <div class="tour-media">
               <img
                 src="assets/dental-operatory-chair-room.jpg"
@@ -284,13 +261,13 @@
               >
             </div>
             <div class="tour-body">
-              <span class="tour-label">Clinical Room</span>
+              <span class="tour-label">Plate 04 · Clinical Room</span>
               <h3>Dedicated Dental Operatory</h3>
-              <p>A secondary quiet treatment room equipped with an ergonomic Galaxy sage dental unit and dedicated overhead illumination for focused procedures.</p>
+              <p>A secondary quiet treatment room equipped with a sage Galaxy dental unit and dedicated overhead illumination.</p>
             </div>
           </article>
 
-          <article class="tour-card" data-reveal data-reveal-delay="2">
+          <article class="tour-card" data-reveal data-reveal-delay="1">
             <div class="tour-media">
               <img
                 src="assets/clinic-front-desk-seating.jpg"
@@ -302,26 +279,24 @@
               >
             </div>
             <div class="tour-body">
-              <span class="tour-label">Reception &amp; Intake</span>
-              <h3>Front Check-In &amp; Companion Seating</h3>
-              <p>Private intake desk and quiet seating area welcoming family members and caregivers accompanying patients during longer visits.</p>
+              <span class="tour-label">Plate 05 · Companion Bay</span>
+              <h3>Check-In &amp; Companion Seating</h3>
+              <p>Private intake desk and quiet seating area welcoming accompanying family members during longer visits.</p>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section section--cream" style="padding-top: 24px;">
-      <div class="container">
-        <div class="visit-banner" data-reveal>
-          <div class="visit-banner-copy">
-            <h2>Ready to explore treatment options?</h2>
-            <p>Browse our full range of preventive, restorative, surgical, and smile design services or visit us in Teynampet.</p>
-          </div>
-          <div class="visit-banner-actions">
-            <a class="btn btn--gold" href="treatments.html">View Treatments</a>
-            <a class="btn btn--outline-light" href="contact.html">Contact &amp; Hours</a>
-          </div>
+    <section class="visit-band">
+      <div class="container visit-band-inner" data-reveal>
+        <div>
+          <h2>Explore our treatment options</h2>
+          <p>Browse our full directory of preventive, restorative, surgical, and smile design services.</p>
+        </div>
+        <div class="visit-band-actions">
+          <a class="btn btn--gold" href="treatments.html">View Treatments</a>
+          <a class="btn btn--outline-light" href="contact.html">Contact &amp; Hours</a>
         </div>
       </div>
     </section>
