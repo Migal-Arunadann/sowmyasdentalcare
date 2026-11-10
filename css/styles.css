@@ -39,7 +39,7 @@
   --container-max: 1220px;
   --radius-editorial: 6px;
   --radius-btn: 999px;
-  --header-height: 100px;
+  --header-height: 106px;
 
   /* Motion */
   --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
@@ -402,7 +402,7 @@ h1, h2, h3, h4, p, figure, blockquote {
 }
 
 .brand-logo {
-  height: clamp(68px, 5.8vw, 82px);
+  height: clamp(74px, 6.2vw, 88px);
   width: auto;
   max-width: none;
   object-fit: contain;
@@ -1899,7 +1899,7 @@ h1, h2, h3, h4, p, figure, blockquote {
 }
 
 .footer-logo-wrap img {
-  height: 68px;
+  height: 74px;
   width: auto;
 }
 
@@ -1994,11 +1994,11 @@ h1, h2, h3, h4, p, figure, blockquote {
 
 @media (max-width: 860px) {
   :root {
-    --header-height: 86px;
+    --header-height: 88px;
   }
 
   .brand-logo {
-    height: 68px;
+    height: 70px;
   }
 
   .section {
@@ -2263,9 +2263,9 @@ h1, h2, h3, h4, p, figure, blockquote {
 
 @media (max-width: 580px) {
   .brand-logo {
-    height: 62px;
-    max-height: 62px;
-    max-width: min(248px, 68vw);
+    height: 68px;
+    max-height: 68px;
+    max-width: min(260px, 68vw);
     width: auto;
   }
 
