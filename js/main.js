@@ -31,15 +31,59 @@ function initHeaderScroll() {
 }
 
 /**
- * Accessible mobile navigation drawer toggle.
+ * Accessible mobile navigation drawer toggle, backdrop scrim, and quick studio actions.
  */
 function initMobileNav() {
+  const header = document.querySelector("[data-site-header]");
   const toggleBtn = document.querySelector("[data-nav-toggle]");
   const nav = document.querySelector("[data-primary-nav]");
   if (!toggleBtn || !nav) return;
 
+  // Inject backdrop scrim and studio quick-action footer once across all pages
+  let backdrop = document.querySelector("[data-nav-backdrop]");
+  if (!backdrop) {
+    backdrop = document.createElement("div");
+    backdrop.className = "nav-backdrop";
+    backdrop.setAttribute("data-nav-backdrop", "");
+    backdrop.setAttribute("aria-hidden", "true");
+    document.body.appendChild(backdrop);
+  }
+
+  if (!nav.querySelector(".nav-mobile-kicker")) {
+    const kicker = document.createElement("div");
+    kicker.className = "nav-mobile-kicker";
+    kicker.innerHTML = '<span>Teynampet Studio</span><span>Open &middot; Til 8:00 PM</span>';
+    nav.insertBefore(kicker, nav.firstChild);
+  }
+
+  if (!nav.querySelector(".nav-mobile-meta")) {
+    const meta = document.createElement("div");
+    meta.className = "nav-mobile-meta";
+    meta.innerHTML = `
+      <p class="nav-mobile-address">No. 25/11, Cenotoph 2nd Ln, Austin Nagar, Teynampet</p>
+      <div class="nav-drawer-actions">
+        <a class="nav-drawer-btn nav-drawer-btn--primary" href="tel:+918754516531">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.58 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <span>Call Reception</span>
+        </a>
+        <a class="nav-drawer-btn nav-drawer-btn--outline" href="https://wa.me/918754516531?text=Hello%20Dr.%20Sowmya%27s%20Dental%20Care%2C%20I%20would%20like%20to%20enquire%20about%20visiting%20the%20clinic." target="_blank" rel="noopener noreferrer">
+          <span>WhatsApp</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+        </a>
+      </div>
+    `;
+    nav.appendChild(meta);
+  }
+
   const setOpen = (open) => {
     nav.classList.toggle("is-open", open);
+    backdrop.classList.toggle("is-open", open);
+    document.body.classList.toggle("is-nav-open", open);
+    if (header) header.classList.toggle("is-nav-open", open);
     toggleBtn.setAttribute("aria-expanded", String(open));
     toggleBtn.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
   };
@@ -47,6 +91,12 @@ function initMobileNav() {
   toggleBtn.addEventListener("click", () => {
     const isOpen = nav.classList.contains("is-open");
     setOpen(!isOpen);
+  });
+
+  backdrop.addEventListener("click", () => setOpen(false));
+
+  nav.querySelectorAll("a.nav-link").forEach((link) => {
+    link.addEventListener("click", () => setOpen(false));
   });
 
   document.addEventListener("keydown", (event) => {
@@ -62,6 +112,12 @@ function initMobileNav() {
       !nav.contains(event.target) &&
       !toggleBtn.contains(event.target)
     ) {
+      setOpen(false);
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 860 && nav.classList.contains("is-open")) {
       setOpen(false);
     }
   });
