@@ -18,15 +18,15 @@ window.CLINIC_REELS_CONFIG = {
   profileUrl: "https://www.instagram.com/drsowmyasdentalcare/",
   reelsUrl: "https://www.instagram.com/drsowmyasdentalcare/reels/",
   reelEmbedUrls: [
-    "https://www.instagram.com/reel/DPxuMQLEW0A/",
     "https://www.instagram.com/reel/DfPbxCLzmGE/",
-    "https://www.instagram.com/reel/DdvbCnPRybV/",
-    "https://www.instagram.com/reel/DcdtksNzpzf/",
     "https://www.instagram.com/reel/Daj1EmBRkbQ/",
     "https://www.instagram.com/reel/DZZ-5tLt1Fr/",
     "https://www.instagram.com/reel/DY9kcDpR6j1/",
     "https://www.instagram.com/reel/DYl9oxSRPo-/",
-    "https://www.instagram.com/reel/DYG9X96x18o/"
+    "https://www.instagram.com/reel/DYG9X96x18o/",
+    "https://www.instagram.com/reel/DPxuMQLEW0A/",
+    "https://www.instagram.com/reel/DdvbCnPRybV/",
+    "https://www.instagram.com/reel/DcdtksNzpzf/"
   ],
   spotlightCards: [
     {

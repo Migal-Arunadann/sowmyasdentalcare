@@ -186,29 +186,57 @@ function initReelsCarousel() {
   track.replaceChildren();
 
   if (hasLiveEmbeds) {
-    items.forEach((rawUrl, index) => {
-      const cleanUrl = sanitizeInstagramUrl(rawUrl);
-      if (!cleanUrl) return;
+    const cleanUrls = items.map(sanitizeInstagramUrl).filter(Boolean);
+    const modal = createReelModal(cleanUrls, config.handle || "@drsowmyasdentalcare");
 
+    cleanUrls.forEach((cleanUrl, index) => {
       const card = document.createElement("article");
       card.className = "reel-card reel-card--embed";
 
-      const blockquote = document.createElement("blockquote");
-      blockquote.className = "instagram-media";
-      blockquote.setAttribute("data-instgrm-permalink", cleanUrl);
-      blockquote.setAttribute("data-instgrm-version", "14");
-      blockquote.style.width = "100%";
-      blockquote.style.minWidth = "0";
-      blockquote.style.margin = "0";
-      blockquote.style.border = "0";
-      blockquote.style.boxShadow = "none";
+      const viewport = document.createElement("div");
+      viewport.className = "reel-embed-viewport";
+      viewport.setAttribute("aria-hidden", "true");
 
-      blockquote.appendChild(buildEmbedFallback(cleanUrl, index + 1, items.length, config.handle));
-      card.appendChild(blockquote);
+      const previewIframe = document.createElement("iframe");
+      previewIframe.src = buildReelEmbedSrc(cleanUrl);
+      previewIframe.title = `${config.handle || "@drsowmyasdentalcare"} Reel ${index + 1}`;
+      previewIframe.tabIndex = -1;
+      previewIframe.setAttribute("scrolling", "no");
+      viewport.appendChild(previewIframe);
+
+      const trigger = document.createElement("button");
+      trigger.type = "button";
+      trigger.className = "reel-card-trigger";
+      trigger.setAttribute("aria-label", `Play Instagram Reel ${index + 1} of ${cleanUrls.length}`);
+
+      const topBar = document.createElement("div");
+      topBar.className = "reel-card-top";
+      const handlePill = document.createElement("span");
+      handlePill.className = "reel-handle-pill";
+      handlePill.textContent = config.handle || "@drsowmyasdentalcare";
+      topBar.appendChild(handlePill);
+
+      const bottomBar = document.createElement("div");
+      bottomBar.className = "reel-card-bottom";
+
+      const watchPill = document.createElement("span");
+      watchPill.className = "reel-watch-pill";
+      watchPill.appendChild(createPlayIconSvg());
+      const watchText = document.createElement("span");
+      watchText.textContent = "Watch Reel";
+      watchPill.appendChild(watchText);
+
+      const indexPill = document.createElement("span");
+      indexPill.className = "reel-index-pill";
+      indexPill.textContent = `${String(index + 1).padStart(2, "0")} / ${String(cleanUrls.length).padStart(2, "0")}`;
+
+      bottomBar.append(watchPill, indexPill);
+      trigger.append(topBar, bottomBar);
+      trigger.addEventListener("click", () => modal.open(index, trigger));
+
+      card.append(viewport, trigger);
       track.appendChild(card);
     });
-
-    loadInstagramEmbedScript();
   } else {
     items.forEach((item) => {
       track.appendChild(buildSpotlightReelCard(item));
@@ -219,42 +247,134 @@ function initReelsCarousel() {
   wireCarouselNavigation(track, prevBtn, nextBtn, dotsWrap);
 }
 
-function buildEmbedFallback(url, index, total, handle) {
-  const wrap = document.createElement("div");
-  wrap.className = "reel-embed-fallback";
+function buildReelEmbedSrc(cleanUrl) {
+  return `${cleanUrl.replace(/\/+$/, "")}/embed/`;
+}
 
-  const top = document.createElement("div");
-  top.className = "reel-embed-fallback-top";
+function createReelModal(cleanUrls, handle) {
+  const modal = document.createElement("div");
+  modal.className = "reel-modal";
+  modal.setAttribute("role", "dialog");
+  modal.setAttribute("aria-modal", "true");
+  modal.setAttribute("aria-label", "Instagram Reel Player");
+  modal.setAttribute("data-reel-modal", "");
 
-  const pill = document.createElement("span");
-  pill.className = "reel-embed-pill";
-  pill.textContent = `Reel ${index} of ${total}`;
+  const dialog = document.createElement("div");
+  dialog.className = "reel-modal-dialog";
 
-  const playBadge = document.createElement("span");
-  playBadge.className = "reel-play-badge";
-  playBadge.setAttribute("aria-hidden", "true");
-  playBadge.appendChild(createPlayIconSvg());
-  top.append(pill, playBadge);
+  const header = document.createElement("div");
+  header.className = "reel-modal-header";
 
-  const body = document.createElement("div");
-  body.className = "reel-embed-fallback-body";
+  const title = document.createElement("span");
+  title.className = "reel-modal-title";
 
-  const title = document.createElement("strong");
-  title.textContent = handle || "@drsowmyasdentalcare";
+  const actions = document.createElement("div");
+  actions.className = "reel-modal-actions";
 
-  const note = document.createElement("span");
-  note.textContent = "Patient stories, dental education & gentle smile care from our Teynampet clinic.";
-  body.append(title, note);
+  const extLink = document.createElement("a");
+  extLink.className = "reel-modal-ext";
+  extLink.target = "_blank";
+  extLink.rel = "noopener noreferrer";
+  extLink.textContent = "Open on Instagram ↗";
 
-  const link = document.createElement("a");
-  link.className = "reel-embed-link";
-  link.href = url;
-  link.target = "_blank";
-  link.rel = "noopener noreferrer";
-  link.textContent = "Watch Reel on Instagram →";
+  const closeBtn = document.createElement("button");
+  closeBtn.type = "button";
+  closeBtn.className = "reel-modal-close";
+  closeBtn.setAttribute("aria-label", "Close Reel player");
+  closeBtn.appendChild(createCloseIconSvg());
 
-  wrap.append(top, body, link);
-  return wrap;
+  actions.append(extLink, closeBtn);
+  header.append(title, actions);
+
+  const stage = document.createElement("div");
+  stage.className = "reel-modal-stage";
+
+  const iframe = document.createElement("iframe");
+  iframe.className = "reel-modal-iframe";
+  iframe.title = "Instagram Reel Player";
+  iframe.setAttribute("allow", "autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share");
+  iframe.setAttribute("allowfullscreen", "");
+  stage.appendChild(iframe);
+
+  const footer = document.createElement("div");
+  footer.className = "reel-modal-footer";
+
+  const prevBtn = document.createElement("button");
+  prevBtn.type = "button";
+  prevBtn.className = "reel-modal-nav-btn";
+  prevBtn.textContent = "← Previous";
+
+  const nextBtn = document.createElement("button");
+  nextBtn.type = "button";
+  nextBtn.className = "reel-modal-nav-btn";
+  nextBtn.textContent = "Next →";
+
+  footer.append(prevBtn, nextBtn);
+  dialog.append(header, stage, footer);
+  modal.appendChild(dialog);
+  document.body.appendChild(modal);
+
+  let activeIndex = 0;
+  let lastTrigger = null;
+
+  const renderSlide = (index) => {
+    activeIndex = Math.max(0, Math.min(cleanUrls.length - 1, index));
+    const url = cleanUrls[activeIndex];
+    title.textContent = `${handle} · ${activeIndex + 1} / ${cleanUrls.length}`;
+    extLink.href = url;
+    iframe.src = buildReelEmbedSrc(url);
+    prevBtn.disabled = activeIndex === 0;
+    nextBtn.disabled = activeIndex === cleanUrls.length - 1;
+  };
+
+  const close = () => {
+    modal.classList.remove("is-open");
+    document.body.style.overflow = "";
+    iframe.src = "about:blank";
+    if (lastTrigger && typeof lastTrigger.focus === "function") {
+      lastTrigger.focus();
+    }
+  };
+
+  const open = (index, triggerEl) => {
+    lastTrigger = triggerEl || null;
+    renderSlide(index);
+    modal.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+    closeBtn.focus();
+  };
+
+  closeBtn.addEventListener("click", close);
+  prevBtn.addEventListener("click", () => renderSlide(activeIndex - 1));
+  nextBtn.addEventListener("click", () => renderSlide(activeIndex + 1));
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) close();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (!modal.classList.contains("is-open")) return;
+    if (event.key === "Escape") close();
+    if (event.key === "ArrowLeft" && activeIndex > 0) renderSlide(activeIndex - 1);
+    if (event.key === "ArrowRight" && activeIndex < cleanUrls.length - 1) renderSlide(activeIndex + 1);
+  });
+
+  return { open, close };
+}
+
+function createCloseIconSvg() {
+  const ns = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(ns, "svg");
+  svg.setAttribute("viewBox", "0 0 24 24");
+  svg.setAttribute("fill", "none");
+  svg.setAttribute("stroke", "currentColor");
+  svg.setAttribute("stroke-width", "2");
+  const l1 = document.createElementNS(ns, "line");
+  l1.setAttribute("x1", "18"); l1.setAttribute("y1", "6"); l1.setAttribute("x2", "6"); l1.setAttribute("y2", "18");
+  const l2 = document.createElementNS(ns, "line");
+  l2.setAttribute("x1", "6"); l2.setAttribute("y1", "6"); l2.setAttribute("x2", "18"); l2.setAttribute("y2", "18");
+  svg.append(l1, l2);
+  return svg;
 }
 
 function sanitizeInstagramUrl(url) {
@@ -267,26 +387,6 @@ function sanitizeInstagramUrl(url) {
     return null;
   }
   return null;
-}
-
-function loadInstagramEmbedScript() {
-  const existing = document.querySelector('script[src*="instagram.com/embed.js"]');
-  if (existing) {
-    if (window.instgrm && window.instgrm.Embeds) {
-      window.instgrm.Embeds.process();
-    }
-    return;
-  }
-
-  const script = document.createElement("script");
-  script.async = true;
-  script.src = "https://www.instagram.com/embed.js";
-  script.addEventListener("load", () => {
-    if (window.instgrm && window.instgrm.Embeds) {
-      window.instgrm.Embeds.process();
-    }
-  });
-  document.body.appendChild(script);
 }
 
 function buildSpotlightReelCard(item) {
