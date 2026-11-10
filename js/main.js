@@ -186,7 +186,7 @@ function initReelsCarousel() {
   track.replaceChildren();
 
   if (hasLiveEmbeds) {
-    items.forEach((rawUrl) => {
+    items.forEach((rawUrl, index) => {
       const cleanUrl = sanitizeInstagramUrl(rawUrl);
       if (!cleanUrl) return;
 
@@ -198,15 +198,12 @@ function initReelsCarousel() {
       blockquote.setAttribute("data-instgrm-permalink", cleanUrl);
       blockquote.setAttribute("data-instgrm-version", "14");
       blockquote.style.width = "100%";
+      blockquote.style.minWidth = "0";
       blockquote.style.margin = "0";
+      blockquote.style.border = "0";
+      blockquote.style.boxShadow = "none";
 
-      const fallbackLink = document.createElement("a");
-      fallbackLink.href = cleanUrl;
-      fallbackLink.target = "_blank";
-      fallbackLink.rel = "noopener noreferrer";
-      fallbackLink.textContent = "View Reel on Instagram";
-      blockquote.appendChild(fallbackLink);
-
+      blockquote.appendChild(buildEmbedFallback(cleanUrl, index + 1, items.length, config.handle));
       card.appendChild(blockquote);
       track.appendChild(card);
     });
@@ -222,11 +219,49 @@ function initReelsCarousel() {
   wireCarouselNavigation(track, prevBtn, nextBtn, dotsWrap);
 }
 
+function buildEmbedFallback(url, index, total, handle) {
+  const wrap = document.createElement("div");
+  wrap.className = "reel-embed-fallback";
+
+  const top = document.createElement("div");
+  top.className = "reel-embed-fallback-top";
+
+  const pill = document.createElement("span");
+  pill.className = "reel-embed-pill";
+  pill.textContent = `Reel ${index} of ${total}`;
+
+  const playBadge = document.createElement("span");
+  playBadge.className = "reel-play-badge";
+  playBadge.setAttribute("aria-hidden", "true");
+  playBadge.appendChild(createPlayIconSvg());
+  top.append(pill, playBadge);
+
+  const body = document.createElement("div");
+  body.className = "reel-embed-fallback-body";
+
+  const title = document.createElement("strong");
+  title.textContent = handle || "@drsowmyasdentalcare";
+
+  const note = document.createElement("span");
+  note.textContent = "Patient stories, dental education & gentle smile care from our Teynampet clinic.";
+  body.append(title, note);
+
+  const link = document.createElement("a");
+  link.className = "reel-embed-link";
+  link.href = url;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.textContent = "Watch Reel on Instagram →";
+
+  wrap.append(top, body, link);
+  return wrap;
+}
+
 function sanitizeInstagramUrl(url) {
   try {
     const parsed = new URL(url);
     if (parsed.hostname.endsWith("instagram.com")) {
-      return parsed.href;
+      return `${parsed.origin}${parsed.pathname}`;
     }
   } catch (_) {
     return null;
@@ -235,7 +270,8 @@ function sanitizeInstagramUrl(url) {
 }
 
 function loadInstagramEmbedScript() {
-  if (document.querySelector('script[src*="instagram.com/embed.js"]')) {
+  const existing = document.querySelector('script[src*="instagram.com/embed.js"]');
+  if (existing) {
     if (window.instgrm && window.instgrm.Embeds) {
       window.instgrm.Embeds.process();
     }
@@ -245,6 +281,11 @@ function loadInstagramEmbedScript() {
   const script = document.createElement("script");
   script.async = true;
   script.src = "https://www.instagram.com/embed.js";
+  script.addEventListener("load", () => {
+    if (window.instgrm && window.instgrm.Embeds) {
+      window.instgrm.Embeds.process();
+    }
+  });
   document.body.appendChild(script);
 }
 

@@ -1230,6 +1230,7 @@ h1, h2, h3, h4, p, figure, blockquote {
 }
 
 .reels-track {
+  position: relative;
   display: flex;
   gap: 20px;
   overflow-x: auto;
@@ -1270,10 +1271,90 @@ h1, h2, h3, h4, p, figure, blockquote {
 }
 
 .reel-card--embed {
+  flex: 0 0 min(340px, 86vw);
   aspect-ratio: auto;
-  min-height: 480px;
+  min-height: 540px;
   background-color: var(--surface-white);
   justify-content: flex-start;
+  align-items: stretch;
+  cursor: default;
+}
+
+.reel-card--embed:hover {
+  transform: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.reel-card--embed iframe {
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+}
+
+.reel-embed-fallback {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 540px;
+  padding: 24px;
+  background: linear-gradient(165deg, var(--surface-white) 0%, var(--sage-100) 100%);
+  color: var(--navy-900);
+  text-align: left;
+}
+
+.reel-embed-fallback-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.reel-embed-pill {
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  background-color: var(--gold-100);
+  border: 1px solid var(--gold-200);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--navy-900);
+}
+
+.reel-embed-fallback-body {
+  margin-block: auto;
+  padding-block: 28px;
+}
+
+.reel-embed-fallback-body strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--navy-900);
+  margin-bottom: 10px;
+}
+
+.reel-embed-fallback-body span {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--ink-500);
+}
+
+.reel-embed-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: var(--radius-pill);
+  background-color: var(--navy-900);
+  color: var(--surface-white);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.reel-embed-link:hover {
+  background-color: var(--navy-800);
 }
 
 .reel-bg-img {
