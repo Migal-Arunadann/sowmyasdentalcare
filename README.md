@@ -12,4 +12,4 @@ Static multi-page website built strictly with **HTML5, CSS3, and Vanilla JavaScr
 ## Updating Live Content
 
 - **Instagram Reels Carousel (`js/reels-data.js`)**: Paste public Reel links from `@drsowmyasdentalcare` (`https://www.instagram.com/reel/<CODE>/`) into `reelEmbedUrls` to display official Instagram Reels inside the horizontal carousel.
-- **Before / After Slider Photos (`assets/`)**: Replace `assets/smile-before-demo.jpg` and `assets/smile-after-demo.jpg` with matching-angle patient photographs (4:3 aspect ratio recommended).
+- **Before / After Slider Photos (`assets/`)**: Currently using enhanced Smile Design clinical photos (`assets/smile-design-before.jpg` and `assets/smile-design-after.jpg`) with matching framing (4:3 aspect ratio recommended).

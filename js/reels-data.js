@@ -43,8 +43,8 @@ window.CLINIC_REELS_CONFIG = {
       title: "Teeth Gap Closures & Smile Designing",
       description:
         "Natural-looking diastema closure and conservative smile balancing crafted for facial harmony.",
-      image: "assets/smile-after-demo.jpg",
-      imageAlt: "Aligned and brightened natural smile after conservative cosmetic care",
+      image: "assets/smile-design-after.jpg",
+      imageAlt: "Aligned natural smile after Smile Design gap closure treatment",
       url: "https://www.instagram.com/drsowmyasdentalcare/reels/"
     },
     {
