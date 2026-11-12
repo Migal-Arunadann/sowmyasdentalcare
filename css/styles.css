@@ -369,8 +369,188 @@ h1, h2, h3, h4, p, figure, blockquote {
 }
 
 /* ==========================================================================
-   Header & Minimalist Navigation
+   Appointment Booking Section & Modal
    ========================================================================== */
+.booking-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: start;
+}
+
+.booking-copy {
+  max-width: 480px;
+}
+
+.booking-highlights {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.booking-highlights li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.92rem;
+  color: var(--ink);
+}
+
+.booking-highlights svg {
+  width: 20px;
+  height: 20px;
+  color: var(--forest-800);
+  flex-shrink: 0;
+}
+
+.booking-card {
+  background: var(--paper-light);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-editorial);
+  padding: clamp(24px, 4vw, 36px);
+  box-shadow: 0 16px 36px rgba(6, 19, 37, 0.06);
+}
+
+.appointment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--rule-strong);
+  border-radius: 4px;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--gold-500);
+  box-shadow: 0 0 0 3px rgba(166, 124, 40, 0.15);
+}
+
+.btn--full {
+  width: 100%;
+  justify-content: center;
+  min-height: 48px;
+  margin-top: 6px;
+}
+
+.form-disclaimer {
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+  text-align: center;
+  margin: 0;
+}
+
+/* Modal */
+.booking-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background-color: rgba(6, 19, 37, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.booking-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.booking-modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--paper-light);
+  border-radius: 12px;
+  border: 1px solid var(--rule);
+  padding: clamp(22px, 4vw, 32px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  transform: translateY(12px);
+  transition: transform 0.25s var(--ease-editorial);
+}
+
+.booking-modal.is-open .booking-modal-content {
+  transform: translateY(0);
+}
+
+.booking-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.booking-modal-close:hover {
+  background-color: var(--sage-wash);
+}
+
+.booking-modal-header {
+  margin-bottom: 20px;
+  padding-right: 40px;
+}
+
+.booking-modal-header h2 {
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.booking-modal-header p {
+  font-size: 0.88rem;
+  color: var(--ink-muted);
+}
 .site-header {
   position: sticky;
   top: 0;
@@ -2427,6 +2607,7 @@ body.is-nav-open {
   .split-grid,
   .ba-showcase,
   .contact-layout,
+  .booking-layout,
   .reviews-header-row,
   .featured-testimonial,
   .editorial-cols-3,
@@ -2472,6 +2653,11 @@ body.is-nav-open {
 }
 
 @media (max-width: 580px) {
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
   .brand-logo {
     height: clamp(56px, 16vw, 68px);
     max-height: 68px;

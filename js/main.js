@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initReelsCarousel();
   initFaqAccordion();
   initDynamicYear();
+  initAppointmentBooking();
 });
 
 /**
@@ -586,4 +587,191 @@ function initDynamicYear() {
   if (el) {
     el.textContent = String(new Date().getFullYear());
   }
+}
+
+/**
+ * Appointment booking form handler and WhatsApp redirection.
+ * Formats patient details into prefilled text and redirects to WhatsApp.
+ */
+function initAppointmentBooking() {
+  const today = new Date().toISOString().split("T")[0];
+  document.querySelectorAll('input[type="date"]').forEach((inp) => {
+    inp.min = today;
+  });
+
+  const handleBookingSubmit = (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const name = form.patient_name ? form.patient_name.value.trim() : "";
+    const phone = form.patient_phone ? form.patient_phone.value.trim() : "";
+    const service = form.service ? form.service.value : "";
+    const date = form.appointment_date ? form.appointment_date.value : "";
+    const time = form.appointment_time ? form.appointment_time.value : "";
+    const notes = form.notes ? form.notes.value.trim() : "";
+
+    if (!name || !phone || !service || !date) {
+      alert("Please fill in your name, phone number, treatment, and preferred date.");
+      return;
+    }
+
+    let formattedDate = date;
+    if (/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+      const [year, month, day] = date.split("-");
+      const monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+      const mIdx = parseInt(month, 10) - 1;
+      if (mIdx >= 0 && mIdx < 12) {
+        formattedDate = `${parseInt(day, 10)} ${monthNames[mIdx]} ${year}`;
+      }
+    }
+
+    let message = "Hello Dr. Sowmya's Dental Care, I would like to book an appointment.\n\n" +
+      "Patient Details:\n" +
+      "Name: " + name + "\n" +
+      "Phone: " + phone + "\n" +
+      "Treatment: " + service + "\n" +
+      "Preferred Date: " + formattedDate + "\n" +
+      "Preferred Time: " + time;
+    if (notes) {
+      message += "\nNotes: " + notes;
+    }
+
+    const waUrl = "https://wa.me/918754516531?text=" + encodeURIComponent(message);
+    const win = window.open(waUrl, "_blank");
+    if (!win) {
+      window.location.href = waUrl;
+    }
+  };
+
+  document.addEventListener("submit", (e) => {
+    if (e.target.matches("[data-appointment-form]")) {
+      handleBookingSubmit(e);
+    }
+  });
+
+  // Modal setup
+  const ensureModal = () => {
+    let modal = document.querySelector("[data-booking-modal]");
+    if (modal) return modal;
+
+    modal = document.createElement("div");
+    modal.className = "booking-modal";
+    modal.setAttribute("data-booking-modal", "");
+    modal.setAttribute("role", "dialog");
+    modal.setAttribute("aria-modal", "true");
+    modal.setAttribute("aria-labelledby", "modal-book-title");
+    modal.innerHTML = `
+      <div class="booking-modal-content">
+        <button class="booking-modal-close" type="button" data-close-booking aria-label="Close booking modal">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+        <div class="booking-modal-header">
+          <span class="eyebrow" style="margin-bottom: 6px;">Direct Scheduling</span>
+          <h2 id="modal-book-title">Book An Appointment</h2>
+          <p>Fill in your details below to confirm your appointment via WhatsApp.</p>
+        </div>
+        <form class="appointment-form" data-appointment-form>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="modal-name">Patient Full Name *</label>
+              <input type="text" id="modal-name" name="patient_name" placeholder="Enter your full name" required autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="modal-phone">Phone Number *</label>
+              <input type="tel" id="modal-phone" name="patient_phone" placeholder="e.g. 9876543210" required autocomplete="tel">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="modal-service">Treatment Needed *</label>
+              <select id="modal-service" name="service" required>
+                <option value="" disabled selected>Select dental treatment</option>
+                <option value="Dental Implants">Dental Implants</option>
+                <option value="Dental Braces">Dental Braces</option>
+                <option value="Cosmetic Dentistry">Cosmetic Dentistry</option>
+                <option value="Gum Care">Gum Care</option>
+                <option value="Preventive Care">Preventive Care</option>
+                <option value="Root Canal Treatment">Root Canal Treatment</option>
+                <option value="General Consultation">General Consultation</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="modal-date">Preferred Date *</label>
+              <input type="date" id="modal-date" name="appointment_date" min="${today}" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="modal-time">Preferred Time Slot *</label>
+            <select id="modal-time" name="appointment_time" required>
+              <option value="Morning (10:00 AM to 1:00 PM)">Morning (10:00 AM to 1:00 PM)</option>
+              <option value="Afternoon (1:00 PM to 4:00 PM)">Afternoon (1:00 PM to 4:00 PM)</option>
+              <option value="Evening (4:00 PM to 8:00 PM)">Evening (4:00 PM to 8:00 PM)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="modal-notes">Dental Concern or Notes (Optional)</label>
+            <textarea id="modal-notes" name="notes" rows="3" placeholder="Briefly describe your concern or any questions..."></textarea>
+          </div>
+          <button class="btn btn--forest btn--full" type="submit">
+            <span>Confirm &amp; Book via WhatsApp</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            </svg>
+          </button>
+          <p class="form-disclaimer">Your appointment request will open in WhatsApp with these details prefilled.</p>
+        </form>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal || e.target.closest("[data-close-booking]")) {
+        closeModal();
+      }
+    });
+
+    return modal;
+  };
+
+  const openModal = () => {
+    const modal = ensureModal();
+    modal.classList.add("is-open");
+    document.body.classList.add("is-booking-open");
+    const firstInput = modal.querySelector("input");
+    if (firstInput) firstInput.focus();
+  };
+
+  const closeModal = () => {
+    const modal = document.querySelector("[data-booking-modal]");
+    if (modal) {
+      modal.classList.remove("is-open");
+    }
+    document.body.classList.remove("is-booking-open");
+  };
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeModal();
+    }
+  });
+
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-open-booking]");
+    if (!btn) return;
+    const targetSection = document.getElementById("book-appointment");
+    if (targetSection && !btn.hasAttribute("data-force-modal")) {
+      e.preventDefault();
+      targetSection.scrollIntoView({ behavior: "smooth" });
+      const firstInput = targetSection.querySelector("input");
+      if (firstInput) firstInput.focus();
+    } else {
+      e.preventDefault();
+      openModal();
+    }
+  });
 }
