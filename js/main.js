@@ -604,13 +604,15 @@ function initAppointmentBooking() {
 
   const handleBookingSubmit = (event) => {
     event.preventDefault();
-    const form = event.currentTarget;
-    const name = form.patient_name ? form.patient_name.value.trim() : "";
-    const phone = form.patient_phone ? form.patient_phone.value.trim() : "";
-    const service = form.service ? form.service.value : "";
-    const date = form.appointment_date ? form.appointment_date.value : "";
-    const time = form.appointment_time ? form.appointment_time.value : "";
-    const notes = form.notes ? form.notes.value.trim() : "";
+    const form = event.target.closest("[data-appointment-form]") || event.target;
+    if (!form) return;
+
+    const name = (form.elements["patient_name"]?.value || form.patient_name?.value || "").trim();
+    const phone = (form.elements["patient_phone"]?.value || form.patient_phone?.value || "").trim();
+    const service = (form.elements["service"]?.value || form.service?.value || "").trim();
+    const date = (form.elements["appointment_date"]?.value || form.appointment_date?.value || "").trim();
+    const time = (form.elements["appointment_time"]?.value || form.appointment_time?.value || "").trim();
+    const notes = (form.elements["notes"]?.value || form.notes?.value || "").trim();
 
     if (!name || !phone || !service || !date) {
       alert("Please fill in your name, phone number, treatment, and preferred date.");
@@ -642,10 +644,7 @@ function initAppointmentBooking() {
     }
 
     const waUrl = "https://wa.me/918754516531?text=" + encodeURIComponent(message);
-    const win = window.open(waUrl, "_blank");
-    if (!win) {
-      window.location.href = waUrl;
-    }
+    window.location.href = waUrl;
   };
 
   document.addEventListener("submit", (e) => {
@@ -745,8 +744,10 @@ function initAppointmentBooking() {
     const modal = ensureModal();
     modal.classList.add("is-open");
     document.body.classList.add("is-booking-open");
-    const firstInput = modal.querySelector("input");
-    if (firstInput) firstInput.focus();
+    if (window.matchMedia("(min-width: 861px)").matches) {
+      const firstInput = modal.querySelector("input");
+      if (firstInput) firstInput.focus();
+    }
   };
 
   const closeModal = () => {
@@ -770,8 +771,10 @@ function initAppointmentBooking() {
     if (targetSection && !btn.hasAttribute("data-force-modal")) {
       e.preventDefault();
       targetSection.scrollIntoView({ behavior: "smooth" });
-      const firstInput = targetSection.querySelector("input");
-      if (firstInput) firstInput.focus();
+      if (window.matchMedia("(min-width: 861px)").matches) {
+        const firstInput = targetSection.querySelector("input");
+        if (firstInput) firstInput.focus();
+      }
     } else {
       e.preventDefault();
       openModal();
